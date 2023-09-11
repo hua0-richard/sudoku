@@ -1,0 +1,7 @@
+.Grid {
+    height: 80vh;
+    width: 80vh;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}

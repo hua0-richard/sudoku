@@ -1,0 +1,11 @@
+.Box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
+.Atom {
+    border: 0.5px solid red; 
+}
