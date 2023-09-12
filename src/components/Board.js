@@ -5,7 +5,7 @@ import Box from './Box'
 
 function genMatrix() {
     const data = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 3; i++) {
         let temp = {id: i}
         data.push(temp)
     }
@@ -17,7 +17,11 @@ function Board() {
     return (
         <div className='Grid'>
             {m.map((item) => (
-                <Box />
+                <div className='GridColumn'>
+                    {m.map((item) => (
+                        <Box />
+                    ))}
+                </div>
             ))}
         </div>
     );

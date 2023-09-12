@@ -1,3 +1,9 @@
 .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; 
+    width: 10vh; 
+    height: 10vh;
     border: solid 0.25px black;
 }

@@ -1,7 +1,14 @@
 .Grid {
-    height: 80vh;
-    width: 80vh;
+    height: 90vh;
+    width: 90vh;
     background-color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.GridColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vh;
 }

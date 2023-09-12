@@ -16,6 +16,7 @@ function genMatrix() {
 }
 
 function Box() {
+    console.log(window.innerWidth)
     let k = genMatrix();
     return(
         <div className="Box">
