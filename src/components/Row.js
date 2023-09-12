@@ -29,10 +29,13 @@ function Row({k}) {
 
     return (
         <div>
-            {k.map((m) => (
+            {k.map((m) => 
+            (         
+                m.input ? 
                 <div className="box" style = {val}>
                     {m.id}
-                </div>
+                </div> : 
+                <input className="box" style={val}></input>
             ))}
         </div>
     )
