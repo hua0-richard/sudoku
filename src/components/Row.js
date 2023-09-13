@@ -3,12 +3,12 @@ import './Row.css'
 
 function Row({k}) {
     const r = {
-        height: '10vh',
-        width: '10vh'
+        height: '7vh',
+        width: '7vh'
     }
     const t = {
-        height: '10vw',
-        width: '10vw'
+        height: '7vw',
+        width: '7vw'
     }
     const [val, setVal] = useState(r);
     const handleResize = () => {

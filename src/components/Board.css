@@ -2,10 +2,27 @@
     background-color: white;
     display: flex;
     justify-content: center;
+    border-radius: 12px;
 }
 
 .GridColumn {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.ButtonGroup {
+    padding: 12px; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.Button {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.Button:hover {
+    cursor: pointer;
 }

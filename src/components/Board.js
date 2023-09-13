@@ -15,14 +15,20 @@ function genMatrix() {
 function Board() {
     const m = genMatrix();
     return (
-        <div className='Grid'>
-            {m.map((item) => (
-                <div className='GridColumn'>
-                    {m.map((item) => (
-                        <Box />
-                    ))}
-                </div>
-            ))}
+        <div>
+            <div className='Grid'>
+                {m.map((item) => (
+                    <div className='GridColumn'>
+                        {m.map((item) => (
+                            <Box />
+                        ))}
+                    </div>
+                ))}
+            </div>
+            <div className="ButtonGroup">
+                <div className="Button">Test</div>
+                <div className="Button">Test</div>
+            </div>
         </div>
     );
 }
