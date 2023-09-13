@@ -26,8 +26,9 @@ function Board() {
                 ))}
             </div>
             <div className="ButtonGroup">
-                <div className="Button">Test</div>
-                <div className="Button">Test</div>
+                <div className="Button">Random</div>
+                <div className="Button">Check</div>
+                <div className="Button">Solve</div>
             </div>
         </div>
     );
