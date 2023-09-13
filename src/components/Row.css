@@ -7,3 +7,15 @@
     height: 10vh;
     border: solid 0.25px black;
 }
+
+.input {
+    width: 50%; 
+    height: 50%; 
+    border: none; 
+    text-align: center;
+
+}
+
+.input:focus {
+    outline: none; 
+}

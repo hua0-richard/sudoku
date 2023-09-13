@@ -35,7 +35,9 @@ function Row({k}) {
                 <div className="box" style = {val}>
                     {m.id}
                 </div> : 
-                <input className="box" style={val}></input>
+                <div className="box" style = {val}>
+                    <input className="input"></input>
+                </div>
             ))}
         </div>
     )
