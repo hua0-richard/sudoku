@@ -9,12 +9,12 @@
 }
 
 .input {
-    width: 50%; 
-    height: 50%; 
+    width: 90%;
+    height: 90%; 
     border: none; 
     text-align: center;
 }
 
 .input:focus {
-    outline: none; 
+    outline: none;
 }
