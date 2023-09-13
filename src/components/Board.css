@@ -21,8 +21,16 @@
     display: flex;
     justify-content: center;
     color: white;
+    border-radius: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px; 
+    border: 1px solid white; 
 }
 
 .Button:hover {
     cursor: pointer;
+    background-color: red;
+    transition: 0.3s;
 }
