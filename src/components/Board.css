@@ -1,36 +1,36 @@
 .Grid {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    border-radius: 12px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
 }
 
 .GridColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .ButtonGroup {
-    padding: 12px; 
-    display: flex;
-    justify-content: space-between;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Button {
-    display: flex;
-    justify-content: center;
-    color: white;
-    border-radius: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px; 
-    border: 1px solid white; 
+  display: flex;
+  justify-content: center;
+  color: white;
+  border-radius: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 1px solid white;
 }
 
 .Button:hover {
-    cursor: pointer;
-    background-color: red;
-    transition: 0.3s;
+  cursor: pointer;
+  background-color: red;
+  transition: 0.3s;
 }

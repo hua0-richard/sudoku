@@ -1,29 +1,29 @@
-import React from 'react'
-import './Box.css'
-import Row from './Row'
+import React from "react";
+import "./Box.css";
+import Row from "./Row";
 
 function genMatrix() {
-    let data = [];
-    for (let i = 0; i < 3; i++) {
-        let row = [];
-        for (let j = 0; j < 3; j++) {
-            let item = { id: i.toString() + ' ' + j.toString(), input: false }
-            row.push(item);
-        }
-        data.push(row);
+  let data = [];
+  for (let i = 0; i < 3; i++) {
+    let row = [];
+    for (let j = 0; j < 3; j++) {
+      let item = { id: i.toString() + " " + j.toString(), input: false };
+      row.push(item);
     }
-    return data; 
+    data.push(row);
+  }
+  return data;
 }
 
 function Box() {
-    console.log(window.innerWidth)
-    let k = genMatrix();
-    return(
-        <div className="Box">
-            {k.map((u) => (
-                <Row k={u} /> 
-            ))}
-        </div>
-    )
+  console.log(window.innerWidth);
+  let k = genMatrix();
+  return (
+    <div className="Box">
+      {k.map((u) => (
+        <Row k={u} />
+      ))}
+    </div>
+  );
 }
-export default Box
+export default Box;
