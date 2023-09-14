@@ -7,8 +7,9 @@ function genMatrix() {
   for (let i = 0; i < 3; i++) {
     let row = [];
     for (let j = 0; j < 3; j++) {
-      let item = { id: i.toString() + " " + j.toString(), input: false };
-      row.push(item);
+        let temp = false;
+        let item = { id: i.toString() + " " + j.toString(), input:  temp};
+        row.push(item);
     }
     data.push(row);
   }
