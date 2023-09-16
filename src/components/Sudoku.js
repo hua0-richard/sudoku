@@ -1,25 +1,25 @@
 import React from "react";
-import "./Board.css";
+import "./Sudoku.css";
 
 import Box from "./Box";
 
-function genMatrix() {
-  const data = [];
+function sudokuData() {
+  const sudoku = [];
   for (let i = 0; i < 3; i++) {
-    let temp = { id: i };
-    data.push(temp);
+    let box = { id: i };
+    sudoku.push(box);
   }
-  return data;
+  return sudoku;
 }
 
-function Board() {
-  const m = genMatrix();
+function Sudoku() {
+  const s = sudokuData();
   return (
     <div>
       <div className="Grid">
-        {m.map((item) => (
+        {s.map((item) => (
           <div className="GridColumn">
-            {m.map((item) => (
+            {s.map((item) => (
               <Box />
             ))}
           </div>
@@ -34,4 +34,4 @@ function Board() {
     </div>
   );
 }
-export default Board;
+export default Sudoku;
