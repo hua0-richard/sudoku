@@ -25,12 +25,12 @@ function Board() {
           </div>
         ))}
       </div>
-      <div className="ButtonGroup">
+      {/* <div className="ButtonGroup">
         <div className="Button">Random</div>
         <div className="Button">Check</div>
         <div className="Button">Solve</div>
         <div className="Button">Optional</div>
-      </div>
+      </div> */}
     </div>
   );
 }
