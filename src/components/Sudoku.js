@@ -29,6 +29,7 @@ function sudokuData() {
   return sudoku; 
 }
 
+// don't flatten completely, retain 2D structure
 function flattenSudoku(s) {
   let flat = []; 
   console.log(s)
@@ -47,7 +48,7 @@ function flattenSudoku(s) {
 function copyIntoSudoku() {
   for (let i = 0; i < 9; i = i + 3) {
     for (let j = 0; j < 9; j = j + 3) {
-      
+
     }
   }
 }
