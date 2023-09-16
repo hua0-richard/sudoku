@@ -1,6 +1,6 @@
 import React from "react";
 import "./Box.css";
-import Row from "./Row";
+import Column from "./Column";
 
 function genMatrix() {
   let data = [];
@@ -22,7 +22,7 @@ function Box() {
   return (
     <div className="Box">
       {k.map((u) => (
-        <Row k={u} />
+        <Column k={u} />
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./Row.css";
+import "./Column.css";
 
-function Row({ k }) {
+function Column({ k }) {
   const r = {
     height: "7vh",
     width: "7vh",
@@ -43,4 +43,4 @@ function Row({ k }) {
   );
 }
 
-export default Row;
+export default Column;
