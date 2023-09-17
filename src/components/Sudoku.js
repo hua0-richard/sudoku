@@ -25,7 +25,6 @@ function sudokuData() {
     }
     sudoku.push(row);
   }
-  console.log(flattenSudoku(sudoku));
   return sudoku; 
 }
 
