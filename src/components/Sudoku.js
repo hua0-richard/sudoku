@@ -48,7 +48,7 @@ function flattenSudoku(s) {
 
 function Sudoku() {
   const [doneLoading, setLoading] = useState(false);
-  const [s, sets] = useState(sudokuData())
+  const [s, sets] = useState(sudokuData());
 
   function copyIntoSudoku(flat, s_prime) {
     let s = s_prime;
@@ -68,26 +68,26 @@ function Sudoku() {
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
     )
       .then((response) => response.json())
-      .then((data) => { 
+      .then((data) => {
         let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
-        sets(temp)
+        sets(temp);
         setLoading(true);
       });
   });
   return (
     <div>
-      {doneLoading &&       
-      <div className="Grid">
-        {s.map((x) => (
-          <div className="GridColumn">
-            {x.map((y) => (
-              <Box data={y} />
-            ))}
-          </div>
-        ))}
-        {!doneLoading && <div className="Grid"></div>}
-      </div>
-      }
+      {doneLoading && (
+        <div className="Grid">
+          {s.map((x) => (
+            <div className="GridColumn">
+              {x.map((y) => (
+                <Box data={y} />
+              ))}
+            </div>
+          ))}
+          {!doneLoading && <div className="Grid"></div>}
+        </div>
+      )}
       {/* <div className="ButtonGroup">
         <div className="Button">Random</div>
         <div className="Button">Check</div>
