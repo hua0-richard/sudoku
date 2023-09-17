@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Sudoku.css";
 
 import Box from "./Box";
+
+var temp; 
 
 function boxData(a, b) {
   let box = [];
@@ -46,30 +48,37 @@ function flattenSudoku(s) {
   return flat;
 }
 
-function copyIntoSudoku(flat, s) {
-  s.forEach((t) => {
-    t.forEach((u) => {
-      u.forEach((v) => {
-        v.forEach((w) => {
-          w.value = flat[w.r][w.c];
+function Sudoku() {
+  const [doneLoading, setLoading] = useState(false);
+  const [s, sets] = useState(sudokuData())
+
+  function copyIntoSudoku(flat, s_prime) {
+    let s = s_prime;
+    s.forEach((t) => {
+      t.forEach((u) => {
+        u.forEach((v) => {
+          v.forEach((w) => {
+            w.value = flat[w.r][w.c];
+          });
         });
       });
     });
-  });
-}
-
-function Sudoku() {
-  const s = sudokuData();
+    return s;
+  }
   useEffect(() => {
     fetch(
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
     )
       .then((response) => response.json())
-      .then((data) => { copyIntoSudoku(data.newboard.grids[0].value, s)
-      console.log(s) });
+      .then((data) => { 
+        let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
+        sets(temp)
+        setLoading(true);
+      });
   });
   return (
     <div>
+      {doneLoading &&       
       <div className="Grid">
         {s.map((x) => (
           <div className="GridColumn">
@@ -79,6 +88,7 @@ function Sudoku() {
           </div>
         ))}
       </div>
+      }
       {/* <div className="ButtonGroup">
         <div className="Button">Random</div>
         <div className="Button">Check</div>
