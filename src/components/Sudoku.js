@@ -29,7 +29,6 @@ function sudokuData() {
   return sudoku; 
 }
 
-// don't flatten completely, retain 2D structure
 function flattenSudoku(s) {
   let flat = [];
   for (let i = 0; i < 9; i++) {
@@ -48,12 +47,16 @@ function flattenSudoku(s) {
   return flat; 
 }
 
-function copyIntoSudoku() {
-  for (let i = 0; i < 9; i = i + 3) {
-    for (let j = 0; j < 9; j = j + 3) {
-
-    }
-  }
+function copyIntoSudoku(flat, s) {
+  s.forEach(t => {
+    t.forEach(u => {
+      u.forEach(v => {
+        v.forEach(w => {
+          w.value = flat[w.r][w.c].value;
+        })
+      })
+    });
+  });
 }
 
 function Sudoku() {
