@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Sudoku.css";
 
 import Box from "./Box";
@@ -8,12 +8,12 @@ function boxData(a, b) {
   for (let i = 0; i < 3; i++) {
     let row = [];
     for (let j = 0; j < 3; j++) {
-      let item = { c: a * 3 + i, r: b * 3 + j, value: 0, input: true};
+      let item = { c: a * 3 + i, r: b * 3 + j, value: 0, input: true };
       row.push(item);
     }
     box.push(row);
   }
-  return box; 
+  return box;
 }
 
 function sudokuData() {
@@ -25,7 +25,7 @@ function sudokuData() {
     }
     sudoku.push(row);
   }
-  return sudoku; 
+  return sudoku;
 }
 
 function flattenSudoku(s) {
@@ -33,33 +33,39 @@ function flattenSudoku(s) {
   for (let i = 0; i < 9; i++) {
     flat.push(new Array(9));
   }
-  console.log(s)
-  s.forEach(t => {
-    t.forEach(u => {
-      u.forEach(v => {
-        v.forEach(w => {
-          flat[w.r][w.c] = w.value; 
-        })
-      })
+  console.log(s);
+  s.forEach((t) => {
+    t.forEach((u) => {
+      u.forEach((v) => {
+        v.forEach((w) => {
+          flat[w.r][w.c] = w.value;
+        });
+      });
     });
   });
-  return flat; 
+  return flat;
 }
 
 function copyIntoSudoku(flat, s) {
-  s.forEach(t => {
-    t.forEach(u => {
-      u.forEach(v => {
-        v.forEach(w => {
+  s.forEach((t) => {
+    t.forEach((u) => {
+      u.forEach((v) => {
+        v.forEach((w) => {
           w.value = flat[w.r][w.c].value;
-        })
-      })
+        });
+      });
     });
   });
 }
 
 function Sudoku() {
-  const boxes = [1, 2, 3];
+  useEffect(() => {
+    fetch(
+      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  });
   const s = sudokuData();
   return (
     <div>
@@ -67,7 +73,7 @@ function Sudoku() {
         {s.map((x) => (
           <div className="GridColumn">
             {x.map((y) => (
-              <Box data={y}/>
+              <Box data={y} />
             ))}
           </div>
         ))}

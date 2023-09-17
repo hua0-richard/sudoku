@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import Sudoku from "./components/Sudoku";
 import "./App.css";
 
