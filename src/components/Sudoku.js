@@ -87,6 +87,7 @@ function Sudoku() {
             ))}
           </div>
         ))}
+        {!doneLoading && <div className="Grid"></div>}
       </div>
       }
       {/* <div className="ButtonGroup">
