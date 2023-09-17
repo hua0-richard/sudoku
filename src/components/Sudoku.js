@@ -51,7 +51,7 @@ function copyIntoSudoku(flat, s) {
     t.forEach((u) => {
       u.forEach((v) => {
         v.forEach((w) => {
-          w.value = flat[w.r][w.c].value;
+          w.value = flat[w.r][w.c];
         });
       });
     });
@@ -59,14 +59,15 @@ function copyIntoSudoku(flat, s) {
 }
 
 function Sudoku() {
+  const s = sudokuData();
   useEffect(() => {
     fetch(
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
     )
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => { copyIntoSudoku(data.newboard.grids[0].value, s)
+      console.log(s) });
   });
-  const s = sudokuData();
   return (
     <div>
       <div className="Grid">
