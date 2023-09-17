@@ -3,8 +3,6 @@ import "./Sudoku.css";
 
 import Box from "./Box";
 
-var temp; 
-
 function boxData(a, b) {
   let box = [];
   for (let i = 0; i < 3; i++) {

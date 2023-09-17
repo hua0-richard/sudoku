@@ -29,7 +29,7 @@ function Column({ k }) {
   return (
     <div>
       {k.map((m) =>
-        m.input ? (
+        m.value != 0 ? (
           <div className="box" style={val}>
             {m.value}
           </div>
