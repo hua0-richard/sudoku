@@ -8,7 +8,7 @@ function boxData(a, b) {
   for (let i = 0; i < 3; i++) {
     let row = [];
     for (let j = 0; j < 3; j++) {
-      let item = { id: a.toString() + " " + b.toString(), input:  true};
+      let item = { c: a * 3 + i, r: b * 3 + j, value: 0, input: true};
       row.push(item);
     }
     box.push(row);
@@ -31,13 +31,16 @@ function sudokuData() {
 
 // don't flatten completely, retain 2D structure
 function flattenSudoku(s) {
-  let flat = []; 
+  let flat = [];
+  for (let i = 0; i < 9; i++) {
+    flat.push(new Array(9));
+  }
   console.log(s)
   s.forEach(t => {
     t.forEach(u => {
       u.forEach(v => {
         v.forEach(w => {
-          flat.push(w);
+          flat[w.r][w.c] = w.value; 
         })
       })
     });

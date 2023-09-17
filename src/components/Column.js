@@ -31,7 +31,8 @@ function Column({ k }) {
       {k.map((m) =>
         m.input ? (
           <div className="box" style={val}>
-            {m.id}
+            {m.r}
+            {m.c}
           </div>
         ) : (
           <div className="box" style={val}>
