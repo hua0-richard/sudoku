@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Sudoku.css";
-
+import "../Solver"
 import Box from "./Box";
+import solve from "../Solver";
 
 function Sudoku() {
   const [doneLoading, setLoading] = useState(false);
@@ -69,6 +70,8 @@ function Sudoku() {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(solve(data.newboard.grids[0].value, 0, 0));
+        console.log(data.newboard.grids[0].value)
         let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
         sets(temp);
         setLoading(true);
