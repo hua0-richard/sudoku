@@ -78,10 +78,7 @@ function Sudoku() {
   return (
     <div>
       <div className="ButtonGroup">
-        <div className="Button">Random</div>
-        <div className="Button">Check</div>
-        <div className="Button">Solve</div>
-        <div className="Button">Optional</div>
+        <md-filled-button>Complete</md-filled-button> 
       </div>
       {doneLoading && (
         <div className="Grid">
@@ -96,10 +93,7 @@ function Sudoku() {
         </div>
       )}
       <div className="ButtonGroup">
-        <div className="Button">Random</div>
-        <div className="Button">Check</div>
-        <div className="Button">Solve</div>
-        <div className="Button">Optional</div>
+        <md-outlined-button>Back</md-outlined-button>
       </div>
     </div>
   );
