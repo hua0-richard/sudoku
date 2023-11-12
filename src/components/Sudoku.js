@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Sudoku.css";
-import "../Solver"
 import Box from "./Box";
-import solve from "../Solver";
 
 function Sudoku() {
   const [doneLoading, setLoading] = useState(false);
@@ -20,7 +18,7 @@ function Sudoku() {
     }
     return box;
   }
-  
+
   function sudokuData() {
     let sudoku = [];
     for (let i = 0; i < 3; i++) {
@@ -66,12 +64,12 @@ function Sudoku() {
   }
   useEffect(() => {
     fetch(
-      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
+      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}"
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(solve(data.newboard.grids[0].value, 0, 0));
-        console.log(data.newboard.grids[0].value)
+        // console.log(solve(data.newboard.grids[0].value, 0, 0));
+        // console.log(data.newboard.grids[0].value)
         let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
         sets(temp);
         setLoading(true);
@@ -79,6 +77,12 @@ function Sudoku() {
   });
   return (
     <div>
+      <div className="ButtonGroup">
+        <div className="Button">Random</div>
+        <div className="Button">Check</div>
+        <div className="Button">Solve</div>
+        <div className="Button">Optional</div>
+      </div>
       {doneLoading && (
         <div className="Grid">
           {s.map((x) => (
@@ -91,12 +95,12 @@ function Sudoku() {
           {!doneLoading && <div className="Grid"></div>}
         </div>
       )}
-      {/* <div className="ButtonGroup">
+      <div className="ButtonGroup">
         <div className="Button">Random</div>
         <div className="Button">Check</div>
         <div className="Button">Solve</div>
         <div className="Button">Optional</div>
-      </div> */}
+      </div>
     </div>
   );
 }

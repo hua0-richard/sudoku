@@ -1,2 +1,10 @@
 .Container {
+    font-family: Arial, sans-serif;
+    font-size: 24px; 
+}
+
+input {
+    color: #63519f;
+    font-family: Arial, sans-serif;
+    font-size: 24px; 
 }
