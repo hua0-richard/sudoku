@@ -70,6 +70,7 @@ function Sudoku() {
     });
     return s;
   }
+  // TODO: Move out of this function 
   useEffect(() => {
     console.log("fetch")
     fetch(
