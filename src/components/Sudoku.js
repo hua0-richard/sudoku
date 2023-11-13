@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./Sudoku.css";
 import Box from "./Box";
+import {solve} from "../Solver"
 
 function Sudoku() {
   const [doneLoading, setLoading] = useState(false);
   const [s, sets] = useState(sudokuData());
+  var d;
+  function wrapper() {
+    let q = JSON.parse(JSON.stringify(s));
+    solve(d, 0, 0);
+    copyIntoSudoku(d, q);
+    sets(q);
+    // let temp = copyIntoSudoku(d, q);
+  }
 
   function boxData(a, b) {
     let box = [];
@@ -68,6 +77,7 @@ function Sudoku() {
     )
       .then((response) => response.json())
       .then((data) => {
+        d = data.newboard.grids[0].value;
         // console.log(solve(data.newboard.grids[0].value, 0, 0));
         // console.log(data.newboard.grids[0].value)
         let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
@@ -93,7 +103,7 @@ function Sudoku() {
         </div>
       )}
       <div className="ButtonGroup">
-        <md-outlined-button>Back</md-outlined-button>
+        <md-filled-button onClick={wrapper}>Complete</md-filled-button> 
       </div>
     </div>
   );
