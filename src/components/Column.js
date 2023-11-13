@@ -11,20 +11,7 @@ function Column({ k }) {
     width: "7vw",
   };
   const [val, setVal] = useState(r);
-  const handleResize = () => {
-    if (window.innerWidth > window.innerHeight) {
-      setVal(r);
-    } else {
-      setVal(t);
-    }
-  };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div>

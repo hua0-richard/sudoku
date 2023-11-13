@@ -12,7 +12,6 @@ function Sudoku() {
     solve(d, 0, 0);
     copyIntoSudoku(d, q);
     sets(q);
-    // let temp = copyIntoSudoku(d, q);
   }
 
   function boxData(a, b) {
@@ -72,6 +71,7 @@ function Sudoku() {
     return s;
   }
   useEffect(() => {
+    console.log("fetch")
     fetch(
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}"
     )
