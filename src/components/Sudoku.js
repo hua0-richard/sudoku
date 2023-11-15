@@ -6,11 +6,12 @@ import {solve} from "../Solver"
 function Sudoku() {
   const [doneLoading, setLoading] = useState(false);
   const [s, sets] = useState(sudokuData());
-  var d;
+  const [solution, setSolution] = useState(null);
+
   function wrapper() {
     let q = JSON.parse(JSON.stringify(s));
-    solve(d, 0, 0);
-    copyIntoSudoku(d, q);
+    solve(solution, 0, 0);
+    copyIntoSudoku(solution, q);
     sets(q);
   }
 
@@ -70,25 +71,24 @@ function Sudoku() {
     });
     return s;
   }
-  // TODO: Move out of this function
-  useEffect(() => {
+  
+  function getNewSudoku() {
     fetch(
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}"
     )
       .then((response) => response.json())
       .then((data) => {
-        d = data.newboard.grids[0].value;
-        // console.log(solve(data.newboard.grids[0].value, 0, 0));
-        // console.log(data.newboard.grids[0].value)
+        setSolution(data.newboard.grids[0].value);
         let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
         sets(temp);
         setLoading(true);
       });
-  });
+  }
+
   return (
     <div>
       <div className="ButtonGroup">
-        <md-filled-button>Complete</md-filled-button> 
+        <md-filled-button onClick={() => {getNewSudoku()}}>New</md-filled-button> 
       </div>
       {doneLoading && (
         <div className="Grid">
@@ -103,7 +103,7 @@ function Sudoku() {
         </div>
       )}
       <div className="ButtonGroup">
-        <md-filled-button onClick={wrapper}>Complete</md-filled-button> 
+        <md-filled-button onClick={() => {wrapper()}}>Solve</md-filled-button> 
       </div>
     </div>
   );

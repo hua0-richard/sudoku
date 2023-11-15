@@ -22,6 +22,7 @@ function isValid(sudoku, r, c, k) {
 }
 
 export function solve(sudoku, r, c) {
+    if (sudoku) 
     if (r === 9) {
         return true; 
     }
