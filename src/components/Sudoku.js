@@ -104,6 +104,7 @@ function Sudoku() {
       )}
       <div className="ButtonGroup">
         <md-filled-button onClick={() => {wrapper()}}>Solve</md-filled-button> 
+        <md-filled-button>Check</md-filled-button>
       </div>
     </div>
   );
