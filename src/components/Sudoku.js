@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Sudoku.css";
 import Box from "./Box";
 import {solve} from "../Solver"
@@ -6,8 +6,8 @@ import {solve} from "../Solver"
 function Sudoku() {
   const [doneLoading, setLoading] = useState(false);
   const [s, sets] = useState(sudokuData());
-  const [solution, setSolution] = useState(null);
-
+  const [solution, setSolution] = useState();
+  
   function wrapper() {
     let q = JSON.parse(JSON.stringify(s));
     solve(solution, 0, 0);
@@ -20,7 +20,7 @@ function Sudoku() {
     for (let i = 0; i < 3; i++) {
       let row = [];
       for (let j = 0; j < 3; j++) {
-        let item = { c: a * 3 + i, r: b * 3 + j, value: 0, input: true };
+        let item = { c: a * 3 + i, r: b * 3 + j, value: 1, input: true };
         row.push(item);
       }
       box.push(row);
