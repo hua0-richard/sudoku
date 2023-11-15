@@ -70,9 +70,8 @@ function Sudoku() {
     });
     return s;
   }
-  // TODO: Move out of this function 
+  // TODO: Move out of this function
   useEffect(() => {
-    console.log("fetch")
     fetch(
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}"
     )
