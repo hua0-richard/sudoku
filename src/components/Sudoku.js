@@ -10,15 +10,7 @@ function Sudoku() {
   const [s, sets] = useState(sudokuData());
   const [solution, setSolution] = useState(null);
 
-  function easyGame() {
-    getNewSudoku();
-  }
-
-  function mediumGame() {
-    getNewSudoku();
-  }
-
-  function hardGame() {
+  function newGame() {
     getNewSudoku();
   }
 
@@ -90,10 +82,11 @@ function Sudoku() {
     setLoading(false);
     setTitleScreen(false);
     fetch(
-      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
+      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value, difficulty}}}",
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setSolution(data.newboard.grids[0].value);
         let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
         sets(temp);
@@ -148,9 +141,7 @@ function Sudoku() {
         <>
           <div className="Menu">
             <div>Sudoku</div>
-            <md-filled-button onClick={easyGame}>Easy</md-filled-button>
-            <md-filled-button onClick={mediumGame}>Medium</md-filled-button>
-            <md-filled-button onClick={hardGame}>Hard</md-filled-button>
+            <md-filled-button onClick={newGame}>Play</md-filled-button>
           </div>
         </>
       )}
