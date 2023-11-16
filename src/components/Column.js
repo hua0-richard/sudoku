@@ -12,7 +12,6 @@ function Column({ k }) {
   };
   const [val, setVal] = useState(r);
 
-
   return (
     <div>
       {k.map((m) =>
@@ -22,7 +21,7 @@ function Column({ k }) {
           </div>
         ) : (
           <div className="box" style={val}>
-            <input className="input"></input>
+            <input className="input" />
           </div>
         ),
       )}

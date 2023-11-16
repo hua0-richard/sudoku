@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Sudoku.css";
 import Box from "./Box";
-import {solve} from "../Solver"
+import { solve } from "../Solver";
 
 function Sudoku() {
-  const [doneLoading, setLoading] = useState(true);
+  const [doneLoading, setLoading] = useState(false);
   const [s, sets] = useState(sudokuData());
   const [solution, setSolution] = useState(null);
-  
+
   function wrapper() {
     let q = JSON.parse(JSON.stringify(s));
     solve(solution, 0, 0);
@@ -71,10 +71,10 @@ function Sudoku() {
     });
     return s;
   }
-  
+
   function getNewSudoku() {
     fetch(
-      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}"
+      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
     )
       .then((response) => response.json())
       .then((data) => {
@@ -87,25 +87,38 @@ function Sudoku() {
 
   return (
     <div>
-      <div className="ButtonGroup">
-        <md-filled-button onClick={() => {getNewSudoku()}}>New</md-filled-button> 
-      </div>
       {doneLoading && (
-        <div className="Grid">
-          {s.map((x) => (
-            <div className="GridColumn">
-              {x.map((y) => (
-                <Box data={y} />
-              ))}
-            </div>
-          ))}
-          {!doneLoading && <div className="Grid"></div>}
-        </div>
+        <>
+          <div className="ButtonGroup">
+            <md-filled-button
+              onClick={() => {
+                getNewSudoku();
+              }}
+            >
+              New
+            </md-filled-button>
+          </div>
+          <div className="Grid">
+            {s.map((x) => (
+              <div className="GridColumn">
+                {x.map((y) => (
+                  <Box data={y} />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="ButtonGroup">
+            <md-filled-button
+              onClick={() => {
+                wrapper();
+              }}
+            >
+              Solve
+            </md-filled-button>
+            <md-filled-button>Check</md-filled-button>
+          </div>
+        </>
       )}
-      <div className="ButtonGroup">
-        <md-filled-button onClick={() => {wrapper()}}>Solve</md-filled-button> 
-        <md-filled-button>Check</md-filled-button>
-      </div>
     </div>
   );
 }
