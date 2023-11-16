@@ -40,7 +40,7 @@ function StopWatch() {
   });
 
   return (<div>
-    <IoMdPause onClick = {() => {setPause(!pause)}} ></IoMdPause>
+    <IoMdPause id="pause" onClick = {() => {setPause(!pause)}} ></IoMdPause>
     <div>{time}</div>
   </div>);
 }
