@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { IoMdPause } from "react-icons/io";
+
 import "./StopWatch.css";
 
 function StopWatch() {
@@ -38,7 +40,7 @@ function StopWatch() {
   });
 
   return (<div>
-    <div onClick = {() => {setPause(!pause)}}>pause</div>
+    <IoMdPause onClick = {() => {setPause(!pause)}} ></IoMdPause>
     <div>{time}</div>
   </div>);
 }
