@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Sudoku.css";
 import Box from "./Box";
+import StopWatch from "./StopWatch";
 import { solve } from "../Solver";
 
 function Sudoku() {
@@ -98,10 +99,11 @@ function Sudoku() {
   }
 
   return (
-    
     <div>
       {doneLoading && (
         <>
+          <div>Time: </div>
+          <StopWatch />
           <div className="ButtonGroup">
             <md-filled-button
               onClick={() => {
@@ -132,7 +134,6 @@ function Sudoku() {
           </div>
         </>
       )}
-
       {!doneLoading && (
         <>
           <div className="Menu">

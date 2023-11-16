@@ -7,7 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import "@material/web/button/filled-button.js";
 import "@material/web/button/outlined-button.js";
 import "@material/web/checkbox/checkbox.js";
-import "@material/web/progress/circular-progress.js"
+import "@material/web/progress/circular-progress.js";
+import "@fontsource/roboto";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
