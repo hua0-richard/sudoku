@@ -8,6 +8,18 @@ function Sudoku() {
   const [s, sets] = useState(sudokuData());
   const [solution, setSolution] = useState(null);
 
+  function easyGame() {
+    getNewSudoku();
+  }
+
+  function mediumGame() {
+    getNewSudoku();
+  }
+
+  function hardGame() {
+    getNewSudoku();
+  }
+
   function wrapper() {
     let q = JSON.parse(JSON.stringify(s));
     solve(solution, 0, 0);
@@ -116,6 +128,17 @@ function Sudoku() {
               Solve
             </md-filled-button>
             <md-filled-button>Check</md-filled-button>
+          </div>
+        </>
+      )}
+
+      {!doneLoading && (
+        <>
+          <div className="Menu">
+            <div>Sudoku</div>
+            <md-filled-button onClick={easyGame}>Easy</md-filled-button>
+            <md-filled-button onClick={mediumGame}>Medium</md-filled-button>
+            <md-filled-button onClick={hardGame}>Hard</md-filled-button>
           </div>
         </>
       )}
