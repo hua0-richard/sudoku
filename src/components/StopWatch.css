@@ -1,3 +1,11 @@
-#pause:hover {
+#container:hover {
     cursor: pointer;
+}
+
+#pause:hover {
+    color: #63519f;
+}
+
+#play:hover {
+    color: #63519f;
 }

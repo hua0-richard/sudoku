@@ -5,6 +5,7 @@ import StopWatch from "./StopWatch";
 import { solve } from "../Solver";
 
 function Sudoku() {
+  const [titleScreen, setTitleScreen] = useState(true);
   const [doneLoading, setLoading] = useState(false);
   const [s, sets] = useState(sudokuData());
   const [solution, setSolution] = useState(null);
@@ -86,6 +87,8 @@ function Sudoku() {
   }
 
   function getNewSudoku() {
+    setLoading(false);
+    setTitleScreen(false);
     fetch(
       "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value}}}",
     )
@@ -100,7 +103,14 @@ function Sudoku() {
 
   return (
     <div>
-      {doneLoading && (
+      {!doneLoading && !titleScreen && (
+        <>
+          <div>
+            <md-circular-progress indeterminate></md-circular-progress>
+          </div>
+        </>
+      )}
+      {doneLoading && !titleScreen && (
         <>
           <div>Time: </div>
           <StopWatch />
@@ -134,7 +144,7 @@ function Sudoku() {
           </div>
         </>
       )}
-      {!doneLoading && (
+      {titleScreen && (
         <>
           <div className="Menu">
             <div>Sudoku</div>
