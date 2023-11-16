@@ -28,7 +28,7 @@ function StopWatch() {
       } else {
         setTime(minute + ":" + second);
       }
-    }, 1);
+    }, 1000);
   }
 
   useEffect(() => {
