@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./StopWatch.css";
 
 function StopWatch() {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const [time, setTime] = useState("0:00");
   const [pause, setPause] = useState(false);
 
