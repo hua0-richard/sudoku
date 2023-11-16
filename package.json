@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/roboto": "^5.0.8",
     "@material/web": "^1.0.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -38,6 +39,6 @@
   },
   "devDependencies": {
     "css-loader": "^6.8.1",
-    "prettier": "3.0.3"
+    "prettier": "^3.0.3"
   }
 }
