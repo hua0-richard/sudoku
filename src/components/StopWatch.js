@@ -4,7 +4,7 @@ import "./StopWatch.css";
 function StopWatch() {
   const [counter, setCounter] = useState(1);
   const [time, setTime] = useState("0:00");
-  const [pause, setPause] = useState(false);
+  const [pause, setPause] = useState(true);
 
   function run() {
     setTimeout(() => {
@@ -32,10 +32,15 @@ function StopWatch() {
   }
 
   useEffect(() => {
-    run();
+    if (pause) {
+      run();
+    }
   });
 
-  return <div>{time}</div>;
+  return (<div>
+    <div onClick = {() => {setPause(!pause)}}>pause</div>
+    <div>{time}</div>
+  </div>);
 }
 
 export default StopWatch;
