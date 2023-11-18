@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Sudoku.css";
 import Box from "./Box";
 import StopWatch from "./StopWatch";
-import { solve } from "../Solver";
 
 function Sudoku() {
   const [titleScreen, setTitleScreen] = useState(true);
@@ -12,13 +11,6 @@ function Sudoku() {
 
   function newGame() {
     getNewSudoku();
-  }
-
-  function wrapper() {
-    let q = JSON.parse(JSON.stringify(s));
-    solve(solution, 0, 0);
-    copyIntoSudoku(solution, q);
-    sets(q);
   }
 
   function boxData(a, b) {
@@ -82,13 +74,13 @@ function Sudoku() {
     setLoading(false);
     setTitleScreen(false);
     fetch(
-      "https://sudoku-api.vercel.app/api/dosuku?query={newboard(limit:1){grids{value, difficulty}}}",
+      "http://localhost:3001/api",
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        setSolution(data.newboard.grids[0].value);
-        let temp = copyIntoSudoku(data.newboard.grids[0].value, s);
+        console.log(data.result)
+        setSolution(data.result);
+        let temp = copyIntoSudoku(data.result, s);
         sets(temp);
         setLoading(true);
       });
@@ -126,13 +118,6 @@ function Sudoku() {
             ))}
           </div>
           <div className="ButtonGroup">
-            <md-filled-button
-              onClick={() => {
-                wrapper();
-              }}
-            >
-              Solve
-            </md-filled-button>
             <md-filled-button>Check</md-filled-button>
           </div>
         </>
