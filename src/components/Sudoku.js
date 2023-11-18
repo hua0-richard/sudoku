@@ -119,6 +119,7 @@ function Sudoku() {
           </div>
           <div className="ButtonGroup">
             <md-filled-button>Check</md-filled-button>
+            <md-filled-button>Settings</md-filled-button>
           </div>
         </>
       )}
@@ -126,7 +127,9 @@ function Sudoku() {
         <>
           <div className="Menu">
             <div>Sudoku</div>
-            <md-filled-button onClick={newGame}>Play</md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>Easy</md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>Medium</md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>Hard</md-filled-button>
           </div>
         </>
       )}
