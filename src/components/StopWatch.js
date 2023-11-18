@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoMdPause } from "react-icons/io";
 import { IoMdPlay } from "react-icons/io";
-
 import "./StopWatch.css";
 
 function StopWatch() {

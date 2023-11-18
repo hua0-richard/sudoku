@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { FaGear } from "react-icons/fa6";
 import "./Sudoku.css";
 import Box from "./Box";
 import StopWatch from "./StopWatch";
-
 function Sudoku() {
   const [titleScreen, setTitleScreen] = useState(true);
   const [doneLoading, setLoading] = useState(false);
@@ -120,7 +120,7 @@ function Sudoku() {
           </div>
           <div className="ButtonGroup">
             <md-filled-button>Check</md-filled-button>
-            <md-filled-button>Settings</md-filled-button>
+            <FaGear />
           </div>
         </>
       )}
