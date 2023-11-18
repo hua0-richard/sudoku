@@ -78,10 +78,12 @@ function Sudoku() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.result)
-        setSolution(data.result);
-        let temp = copyIntoSudoku(data.result, s);
-        sets(temp);
+        console.log(data)
+        console.log(data.solution)
+        console.log(data.puzzle)
+        // setSolution(data.solution);
+        let puzzle = copyIntoSudoku(data.puzzle, s);
+        sets(puzzle);
         setLoading(true);
       });
   }
@@ -91,6 +93,7 @@ function Sudoku() {
       {!doneLoading && !titleScreen && (
         <>
           <div>
+            <div>Generating Sudoku... </div>
             <md-circular-progress indeterminate></md-circular-progress>
           </div>
         </>
