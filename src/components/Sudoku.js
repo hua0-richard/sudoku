@@ -73,14 +73,12 @@ function Sudoku() {
   function getNewSudoku() {
     setLoading(false);
     setTitleScreen(false);
-    fetch(
-      "http://localhost:3001/api",
-    )
+    fetch("http://localhost:3001/api")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        console.log(data.solution)
-        console.log(data.puzzle)
+        console.log(data);
+        console.log(data.solution);
+        console.log(data.puzzle);
         // setSolution(data.solution);
         let puzzle = copyIntoSudoku(data.puzzle, s);
         sets(puzzle);
@@ -130,9 +128,18 @@ function Sudoku() {
         <>
           <div className="Menu">
             <div>Sudoku</div>
-            <md-filled-button class="Standard-Button" onClick={newGame}>Easy</md-filled-button>
-            <md-filled-button class="Standard-Button" onClick={newGame}>Medium</md-filled-button>
-            <md-filled-button class="Standard-Button" onClick={newGame}>Hard</md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>
+              Easy
+            </md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>
+              Medium
+            </md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>
+              Hard
+            </md-filled-button>
+            <md-outlined-button class="Standard-Button">
+              Login
+            </md-outlined-button>
           </div>
         </>
       )}

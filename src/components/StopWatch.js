@@ -40,11 +40,27 @@ function StopWatch() {
     }
   });
 
-  return (<div id="container">
-    {pause && (<IoMdPause id="pause" onClick = {() => {setPause(!pause)}} ></IoMdPause> )}
-    {!pause && (<IoMdPlay id="pause" onClick = {() => {setPause(!pause)}} ></IoMdPlay> )}
-    <div>{time}</div>
-  </div>);
+  return (
+    <div id="container">
+      {pause && (
+        <IoMdPause
+          id="pause"
+          onClick={() => {
+            setPause(!pause);
+          }}
+        ></IoMdPause>
+      )}
+      {!pause && (
+        <IoMdPlay
+          id="pause"
+          onClick={() => {
+            setPause(!pause);
+          }}
+        ></IoMdPlay>
+      )}
+      <div>{time}</div>
+    </div>
+  );
 }
 
 export default StopWatch;
