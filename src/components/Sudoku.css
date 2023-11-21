@@ -28,6 +28,10 @@
   border: 1px solid white;
 }
 
+.Standard-Button {
+  width: 150px;
+}
+
 .Button:hover {
   cursor: pointer;
   background-color: red;

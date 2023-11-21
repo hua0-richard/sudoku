@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { FaGear } from "react-icons/fa6";
 import "./Sudoku.css";
 import Box from "./Box";
 import StopWatch from "./StopWatch";
-
 function Sudoku() {
   const [titleScreen, setTitleScreen] = useState(true);
   const [doneLoading, setLoading] = useState(false);
@@ -73,15 +73,15 @@ function Sudoku() {
   function getNewSudoku() {
     setLoading(false);
     setTitleScreen(false);
-    fetch(
-      "http://localhost:3001/sudoku",
-    )
+    fetch("http://localhost:3001/sudoku")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.result)
-        setSolution(data.result);
-        let temp = copyIntoSudoku(data.result, s);
-        sets(temp);
+        console.log(data);
+        console.log(data.solution);
+        console.log(data.puzzle);
+        // setSolution(data.solution);
+        let puzzle = copyIntoSudoku(data.puzzle, s);
+        sets(puzzle);
         setLoading(true);
       });
   }
@@ -105,6 +105,7 @@ function Sudoku() {
       {!doneLoading && !titleScreen && (
         <>
           <div>
+            <div>Generating Sudoku... </div>
             <md-circular-progress indeterminate></md-circular-progress>
           </div>
         </>
@@ -133,6 +134,8 @@ function Sudoku() {
           </div>
           <div className="ButtonGroup">
             <md-filled-button onClick = {() => {getSudokuSolution()}}>Check</md-filled-button>
+            <md-filled-button>Check</md-filled-button>
+            <FaGear />
           </div>
         </>
       )}
@@ -140,7 +143,18 @@ function Sudoku() {
         <>
           <div className="Menu">
             <div>Sudoku</div>
-            <md-filled-button onClick={newGame}>Play</md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>
+              Easy
+            </md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>
+              Medium
+            </md-filled-button>
+            <md-filled-button class="Standard-Button" onClick={newGame}>
+              Hard
+            </md-filled-button>
+            <md-outlined-button class="Standard-Button">
+              Login
+            </md-outlined-button>
           </div>
         </>
       )}
