@@ -102,10 +102,7 @@ function Sudoku() {
     <div>
       {!doneLoading && !titleScreen && (
         <>
-          <div>
-            <div>Generating Sudoku... </div>
-            <md-circular-progress indeterminate></md-circular-progress>
-          </div>
+          <md-circular-progress indeterminate></md-circular-progress>
         </>
       )}
       {doneLoading && !titleScreen && (
