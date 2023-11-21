@@ -74,7 +74,7 @@ function Sudoku() {
     setLoading(false);
     setTitleScreen(false);
     fetch(
-      "http://localhost:3001/api",
+      "http://localhost:3001/sudoku",
     )
       .then((response) => response.json())
       .then((data) => {
@@ -84,6 +84,20 @@ function Sudoku() {
         sets(temp);
         setLoading(true);
       });
+  }
+
+  function getSudokuSolution() {
+    setLoading(false);
+    setTitleScreen(false);
+    fetch("http://localhost:3001/solution", {method: "POST",  headers: {
+      'Content-Type': 'application/json',
+      // Add any other headers as needed
+    }, body: JSON.stringify(flattenSudoku(s))}).then((response) => response.json()).then((data) => {
+      console.log(data)
+      let temp = copyIntoSudoku(data.result, s);
+      sets(temp);
+      setLoading(true);
+    })
   }
 
   return (
@@ -118,7 +132,7 @@ function Sudoku() {
             ))}
           </div>
           <div className="ButtonGroup">
-            <md-filled-button>Check</md-filled-button>
+            <md-filled-button onClick = {() => {getSudokuSolution()}}>Check</md-filled-button>
           </div>
         </>
       )}
