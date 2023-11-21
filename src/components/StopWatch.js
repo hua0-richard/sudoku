@@ -8,6 +8,10 @@ function StopWatch() {
   const [time, setTime] = useState("0:00");
   const [pause, setPause] = useState(true);
 
+  function pauseAction() {
+    setPause(!pause)
+  }
+
   function run() {
     setTimeout(() => {
       setCounter(counter + 1);
@@ -45,7 +49,7 @@ function StopWatch() {
         <IoMdPause
           id="pause"
           onClick={() => {
-            setPause(!pause);
+            pauseAction();
           }}
         ></IoMdPause>
       )}
@@ -53,7 +57,7 @@ function StopWatch() {
         <IoMdPlay
           id="pause"
           onClick={() => {
-            setPause(!pause);
+            pauseAction();
           }}
         ></IoMdPlay>
       )}

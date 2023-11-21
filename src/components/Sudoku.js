@@ -77,10 +77,8 @@ function Sudoku() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        console.log(data.solution);
-        console.log(data.puzzle);
-        // setSolution(data.solution);
-        let puzzle = copyIntoSudoku(data.puzzle, s);
+        console.log(data.result);
+        let puzzle = copyIntoSudoku(data.result, s);
         sets(puzzle);
         setLoading(true);
       });
@@ -134,7 +132,6 @@ function Sudoku() {
           </div>
           <div className="ButtonGroup">
             <md-filled-button onClick = {() => {getSudokuSolution()}}>Check</md-filled-button>
-            <md-filled-button>Check</md-filled-button>
             <FaGear />
           </div>
         </>
