@@ -9,8 +9,8 @@ function Sudoku() {
   const [s, sets] = useState(sudokuData());
   const [solution, setSolution] = useState(null);
 
-  function newGame() {
-    getNewSudoku();
+  function newGame(difficulty) {
+    getNewSudoku(difficulty);
   }
 
   function boxData(a, b) {
@@ -70,10 +70,10 @@ function Sudoku() {
     return s;
   }
 
-  function getNewSudoku() {
+  function getNewSudoku(difficulty) {
     setLoading(false);
     setTitleScreen(false);
-    fetch("http://localhost:3001/sudoku")
+    fetch("http://localhost:3001/sudoku/" + difficulty)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -87,15 +87,21 @@ function Sudoku() {
   function getSudokuSolution() {
     setLoading(false);
     setTitleScreen(false);
-    fetch("http://localhost:3001/solution", {method: "POST",  headers: {
-      'Content-Type': 'application/json',
-      // Add any other headers as needed
-    }, body: JSON.stringify(flattenSudoku(s))}).then((response) => response.json()).then((data) => {
-      console.log(data)
-      let temp = copyIntoSudoku(data.result, s);
-      sets(temp);
-      setLoading(true);
+    fetch("http://localhost:3001/solution", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Add any other headers as needed
+      },
+      body: JSON.stringify(flattenSudoku(s)),
     })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        let temp = copyIntoSudoku(data.result, s);
+        sets(temp);
+        setLoading(true);
+      });
   }
 
   return (
@@ -112,7 +118,7 @@ function Sudoku() {
           <div className="ButtonGroup">
             <md-filled-button
               onClick={() => {
-                getNewSudoku();
+                getNewSudoku("medium");
               }}
             >
               New
@@ -128,7 +134,13 @@ function Sudoku() {
             ))}
           </div>
           <div className="ButtonGroup">
-            <md-filled-button onClick = {() => {getSudokuSolution()}}>Check</md-filled-button>
+            <md-filled-button
+              onClick={() => {
+                getSudokuSolution();
+              }}
+            >
+              Check
+            </md-filled-button>
             <FaGear />
           </div>
         </>
@@ -137,13 +149,13 @@ function Sudoku() {
         <>
           <div className="Menu">
             <div>Sudoku</div>
-            <md-filled-button class="Standard-Button" onClick={newGame}>
+            <md-filled-button class="Standard-Button" onClick={() => {newGame("easy")}}>
               Easy
             </md-filled-button>
-            <md-filled-button class="Standard-Button" onClick={newGame}>
+            <md-filled-button class="Standard-Button" onClick={() => {newGame("medium")}}>
               Medium
             </md-filled-button>
-            <md-filled-button class="Standard-Button" onClick={newGame}>
+            <md-filled-button class="Standard-Button" onClick={() => {newGame("hard")}}>
               Hard
             </md-filled-button>
             <md-outlined-button class="Standard-Button">
