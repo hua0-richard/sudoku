@@ -149,13 +149,28 @@ function Sudoku() {
         <>
           <div className="Menu">
             <div>Sudoku</div>
-            <md-filled-button class="Standard-Button" onClick={() => {newGame("easy")}}>
+            <md-filled-button
+              class="Standard-Button"
+              onClick={() => {
+                newGame("easy");
+              }}
+            >
               Easy
             </md-filled-button>
-            <md-filled-button class="Standard-Button" onClick={() => {newGame("medium")}}>
+            <md-filled-button
+              class="Standard-Button"
+              onClick={() => {
+                newGame("medium");
+              }}
+            >
               Medium
             </md-filled-button>
-            <md-filled-button class="Standard-Button" onClick={() => {newGame("hard")}}>
+            <md-filled-button
+              class="Standard-Button"
+              onClick={() => {
+                newGame("hard");
+              }}
+            >
               Hard
             </md-filled-button>
             <md-outlined-button class="Standard-Button">
