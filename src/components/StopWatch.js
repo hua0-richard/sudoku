@@ -9,7 +9,7 @@ function StopWatch() {
   const [pause, setPause] = useState(true);
 
   function pauseAction() {
-    setPause(!pause)
+    setPause(!pause);
   }
 
   function run() {
