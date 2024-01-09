@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+
 import "./Column.css";
 
-function Column({ k }) {
+function Column({ k, s, sets}) {
   const r = {
     height: "7vh",
     width: "7vh",
@@ -12,6 +13,11 @@ function Column({ k }) {
   };
   const [val, setVal] = useState(r);
 
+
+  function nothing() {
+    console.log(s)
+  }
+
   return (
     <div>
       {k.map((m) =>
@@ -21,7 +27,7 @@ function Column({ k }) {
           </div>
         ) : (
           <div className="box" style={val}>
-            <input className="input" />
+            <input className="input" onChange={() => {nothing()}}/>
           </div>
         ),
       )}

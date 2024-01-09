@@ -128,7 +128,7 @@ function Sudoku() {
             {s.map((x) => (
               <div className="GridColumn">
                 {x.map((y) => (
-                  <Box data={y} />
+                  <Box data={y} s={s} sets={sets}/>
                 ))}
               </div>
             ))}
@@ -141,10 +141,18 @@ function Sudoku() {
             >
               Check
             </md-filled-button>
+            <md-filled-button
+              onClick={() => {
+                console.log(s);
+              }}
+            >
+              Verify
+            </md-filled-button>
             <FaGear />
           </div>
         </>
       )}
+      // title screen
       {titleScreen && (
         <>
           <div className="Menu">
