@@ -15,8 +15,9 @@ function StopWatch() {
   function run() {
     setTimeout(() => {
       setCounter(counter + 1);
-      let minute = Math.floor(counter / 60);
-      let second = counter - minute * 60;
+      let time = Math.floor(counter / 100);
+      let minute = Math.floor(time / 60);
+      let second = time - minute * 60;
       if (second < 10) {
         second = "0" + second.toString();
       } else {
@@ -34,7 +35,7 @@ function StopWatch() {
       } else {
         setTime(minute + ":" + second);
       }
-    }, 1000);
+    }, 10);
   }
 
   useEffect(() => {
