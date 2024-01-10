@@ -13,15 +13,15 @@ function Sudoku() {
     mode: "player",
     difficulty: "easy",
     solution: [],
-    puzzle: []
-  })
+    puzzle: [],
+  });
 
   function difficulty(level) {
-    let temp = meta; 
+    let temp = meta;
     temp.difficulty = level;
     setMeta(temp);
   }
-  
+
   function changeMode(mode) {
     let temp = meta;
     temp.mode = mode;
@@ -29,13 +29,13 @@ function Sudoku() {
   }
 
   function setSolution(solution) {
-    let temp = meta; 
+    let temp = meta;
     temp.solution = solution;
     setMeta(temp);
   }
 
   function setPuzzle(puzzle) {
-    let temp = meta; 
+    let temp = meta;
     temp.puzzle = puzzle;
     setMeta(temp);
   }
@@ -85,7 +85,7 @@ function Sudoku() {
   }
 
   function getSudokuSolution() {
-    console.log(meta.puzzle)
+    console.log(meta.puzzle);
     setLoading(false);
     setTitleScreen(false);
     fetch("http://localhost:3001/solution", {
@@ -99,8 +99,6 @@ function Sudoku() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.result);
-        // let temp = copyIntoSudoku(data.result, s);
-        // sets(temp);
         setSolution(data.result);
         changeMode("solution");
         setLoading(true);
@@ -131,7 +129,13 @@ function Sudoku() {
             {s.map((x) => (
               <div className="GridColumn">
                 {x.map((y) => (
-                  <Box data={y} s={s} sets={sets} meta={meta} setMeta={setMeta}/>
+                  <Box
+                    data={y}
+                    s={s}
+                    sets={sets}
+                    meta={meta}
+                    setMeta={setMeta}
+                  />
                 ))}
               </div>
             ))}
@@ -155,7 +159,7 @@ function Sudoku() {
             <md-filled-button
               class="Standard-Button"
               onClick={() => {
-                difficulty("easy")
+                difficulty("easy");
                 newGame();
               }}
             >
@@ -164,7 +168,7 @@ function Sudoku() {
             <md-filled-button
               class="Standard-Button"
               onClick={() => {
-                difficulty("medium")
+                difficulty("medium");
                 newGame();
               }}
             >
@@ -173,7 +177,7 @@ function Sudoku() {
             <md-filled-button
               class="Standard-Button"
               onClick={() => {
-                difficulty("hard")
+                difficulty("hard");
                 newGame();
               }}
             >

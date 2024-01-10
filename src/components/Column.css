@@ -19,7 +19,7 @@
   background-color: #e5e0e8;
   color: red;
   border: solid 0.25px #c9c4cf;
-} 
+}
 
 .correctBox {
   display: flex;
@@ -31,7 +31,7 @@
   background-color: #e5e0e8;
   color: green;
   border: solid 0.25px #c9c4cf;
-} 
+}
 
 .input {
   background-color: #f2edf6;

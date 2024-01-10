@@ -22,8 +22,8 @@ function Column({ k, s, sets, meta, setMeta }) {
             if (w.r === m.r && w.c === m.c) {
               // modify
               w.value = e;
-              sets(s_prime)
-              return; 
+              sets(s_prime);
+              return;
             }
           });
         });
@@ -52,22 +52,26 @@ function Column({ k, s, sets, meta, setMeta }) {
               }}
             />
           </div>
-        )
+        ),
       )}
     </div>
   );
 
   const columnSolution = (
     <div>
-      {k.map((m) => m.value === meta.solution[m.r][m.c] ? (
+      {k.map((m) =>
+        m.value === meta.solution[m.r][m.c] ? (
           <div className="correctBox" style={val}>
             {m.value}
           </div>
-      ) : (
-        <div>
-          <div className="diffbox" style={val}>{meta.solution[m.r][m.c]}</div>
-        </div>
-      ))}
+        ) : (
+          <div>
+            <div className="diffbox" style={val}>
+              {meta.solution[m.r][m.c]}
+            </div>
+          </div>
+        ),
+      )}
     </div>
   );
 
