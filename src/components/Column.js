@@ -41,7 +41,11 @@ function Column({ k, s, sets, meta, setMeta }) {
     </div>
   );
 
-  const columnSolution = (<div></div>);
+  const columnSolution = (<div>
+    {
+      k.map((m) => <div className="box" style={val}>{m.value}</div>)
+    }
+  </div>);
 
   return (
     meta.mode === "player" ? 

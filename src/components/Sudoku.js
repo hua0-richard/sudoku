@@ -20,6 +20,19 @@ function Sudoku() {
     temp.difficulty = level;
     setMeta(temp);
   }
+  
+  function changeMode(mode) {
+    let temp = meta;
+    temp.mode = mode;
+    setMeta(temp);
+  }
+
+  function setSolution(solution) {
+    let temp = meta; 
+    temp.solution = solution;
+    setMeta(temp);
+  }
+
   function newGame() {
     getNewSudoku(meta.difficulty);
   }
@@ -55,8 +68,8 @@ function Sudoku() {
     fetch("http://localhost:3001/sudoku/" + difficulty)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        console.log(data.result);
+        changeMode("player");
+        setSolution(data.result);
         let puzzle = copyIntoSudoku(data.result, s, true);
         sets(puzzle);
         setLoading(true);
@@ -79,6 +92,7 @@ function Sudoku() {
         console.log(data);
         let temp = copyIntoSudoku(data.result, s);
         sets(temp);
+        changeMode("solution");
         setLoading(true);
       });
   }
