@@ -20,7 +20,7 @@ function Column({ k, s, sets, meta, setMeta }) {
     sets(result);
   }
 
-  return (
+  const column = (
     <div>
       {k.map((m) =>
         m.input === false ? (
@@ -36,9 +36,13 @@ function Column({ k, s, sets, meta, setMeta }) {
               }}
             />
           </div>
-        ),
+        )
       )}
     </div>
+  );
+
+  return (
+    column 
   );
 }
 
