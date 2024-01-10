@@ -41,8 +41,11 @@ function Column({ k, s, sets, meta, setMeta }) {
     </div>
   );
 
+  const columnSolution = (<div></div>);
+
   return (
-    column 
+    meta.mode === "player" ? 
+    column : columnSolution
   );
 }
 
