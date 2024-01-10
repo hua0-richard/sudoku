@@ -12,17 +12,33 @@ function Column({ k, s, sets, meta, setMeta }) {
     width: "7vw",
   };
   const [val, setVal] = useState(r);
-  const [subcol, setSubcol] = useState(k);
+
+  function slowFind(m, e, sudoku) {
+    let s_prime = sudoku;
+    s_prime.forEach((t) => {
+      t.forEach((u) => {
+        u.forEach((v) => {
+          v.forEach((w) => {
+            if (w.r === m.r && w.c === m.c) {
+              // modify
+              w.value = e;
+              sets(s_prime)
+              return; 
+            }
+          });
+        });
+      });
+    });
+  }
 
   function input(m, e) {
-    let temp = subcol;
-    subcol[subcol.indexOf(m)].value = e;
-    setSubcol(temp);
+    slowFind(m, e, s);
+    console.log(s);
   }
 
   const column = (
     <div>
-      {subcol.map((m) =>
+      {k.map((m) =>
         m.input === false ? (
           <div className="box" style={val}>
             {m.value}
@@ -43,7 +59,7 @@ function Column({ k, s, sets, meta, setMeta }) {
 
   const columnSolution = (
     <div>
-      {subcol.map((m) => m.value === meta.solution[m.r][m.c] ? (
+      {k.map((m) => m.value === meta.solution[m.r][m.c] ? (
           <div className="correctBox" style={val}>
             {m.value}
           </div>

@@ -12,7 +12,8 @@ function Sudoku() {
   const [meta, setMeta] = useState({
     mode: "player",
     difficulty: "easy",
-    solution: []
+    solution: [],
+    puzzle: []
   })
 
   function difficulty(level) {
@@ -30,6 +31,12 @@ function Sudoku() {
   function setSolution(solution) {
     let temp = meta; 
     temp.solution = solution;
+    setMeta(temp);
+  }
+
+  function setPuzzle(puzzle) {
+    let temp = meta; 
+    temp.puzzle = puzzle;
     setMeta(temp);
   }
 
@@ -72,11 +79,13 @@ function Sudoku() {
         setSolution(data.result);
         let puzzle = copyIntoSudoku(data.result, s, true);
         sets(puzzle);
+        setPuzzle(data.result);
         setLoading(true);
       });
   }
 
   function getSudokuSolution() {
+    console.log(meta.puzzle)
     setLoading(false);
     setTitleScreen(false);
     fetch("http://localhost:3001/solution", {
@@ -85,11 +94,11 @@ function Sudoku() {
         "Content-Type": "application/json",
         // Add any other headers as needed
       },
-      body: JSON.stringify(flattenSudoku(s)),
+      body: JSON.stringify(meta.puzzle),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.result);
         // let temp = copyIntoSudoku(data.result, s);
         // sets(temp);
         setSolution(data.result);
