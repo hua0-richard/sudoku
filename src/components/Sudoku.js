@@ -107,7 +107,7 @@ function Sudoku() {
             {s.map((x) => (
               <div className="GridColumn">
                 {x.map((y) => (
-                  <Box data={y} s={s} sets={sets} />
+                  <Box data={y} s={s} sets={sets} meta={meta} setMeta={setMeta}/>
                 ))}
               </div>
             ))}

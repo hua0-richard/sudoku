@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { isValid, flattenSudoku, copyIntoSudoku } from "../util";
 import "./Column.css";
 
-function Column({ k, s, sets }) {
+function Column({ k, s, sets, meta, setMeta }) {
   const r = {
     height: "7vh",
     width: "7vh",
@@ -12,7 +12,6 @@ function Column({ k, s, sets }) {
     width: "7vw",
   };
   const [val, setVal] = useState(r);
-  const [inputClass, setInputClass] = useState("input")
 
   function input(m, e) {
     let temp = flattenSudoku(s);
@@ -31,7 +30,7 @@ function Column({ k, s, sets }) {
         ) : (
           <div className="box" style={val}>
             <input
-              className={inputClass}
+              className="input"
               onChange={(e) => {
                 input(m, parseInt(e.target.value));
               }}
