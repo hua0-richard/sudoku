@@ -7,7 +7,7 @@ function Box({ data, s, sets }) {
   return (
     <div className="Box">
       {k.map((u) => (
-        <Column k={u} s={s} sets={sets}/>
+        <Column k={u} s={s} sets={sets} />
       ))}
     </div>
   );

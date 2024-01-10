@@ -42,7 +42,6 @@ export function flattenSudoku(s) {
   return flat;
 }
 
-
 export function copyIntoSudoku(flat, s_prime) {
   let s = s_prime;
   s.forEach((t) => {
