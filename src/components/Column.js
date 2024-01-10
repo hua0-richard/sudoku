@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import {isValid, flattenSudoku, copyIntoSudoku} from "../util"
 import "./Column.css";
 
 function Column({ k, s, sets}) {
@@ -14,8 +14,16 @@ function Column({ k, s, sets}) {
   const [val, setVal] = useState(r);
 
 
-  function nothing() {
-    console.log(s)
+  function nothing(m, e) {
+    let temp = flattenSudoku(s);
+    temp[m.c][m.r] = e;
+    let result = copyIntoSudoku(temp, s)
+    sets(result); 
+    if(isValid(flattenSudoku(s), m.r, m.c, e)) {
+
+    } else {
+      
+    }
   }
 
   return (
@@ -27,7 +35,7 @@ function Column({ k, s, sets}) {
           </div>
         ) : (
           <div className="box" style={val}>
-            <input className="input" onChange={() => {nothing()}}/>
+            <input className="input" onChange={(e) => {nothing(m, parseInt(e.target.value))}}/>
           </div>
         ),
       )}

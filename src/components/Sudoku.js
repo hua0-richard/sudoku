@@ -3,6 +3,8 @@ import { FaGear } from "react-icons/fa6";
 import "./Sudoku.css";
 import Box from "./Box";
 import StopWatch from "./StopWatch";
+import { flattenSudoku, copyIntoSudoku } from "../util";
+
 function Sudoku() {
   const [titleScreen, setTitleScreen] = useState(true);
   const [doneLoading, setLoading] = useState(false);
@@ -36,38 +38,6 @@ function Sudoku() {
       sudoku.push(row);
     }
     return sudoku;
-  }
-
-  function flattenSudoku(s) {
-    let flat = [];
-    for (let i = 0; i < 9; i++) {
-      flat.push(new Array(9));
-    }
-    console.log(s);
-    s.forEach((t) => {
-      t.forEach((u) => {
-        u.forEach((v) => {
-          v.forEach((w) => {
-            flat[w.r][w.c] = w.value;
-          });
-        });
-      });
-    });
-    return flat;
-  }
-
-  function copyIntoSudoku(flat, s_prime) {
-    let s = s_prime;
-    s.forEach((t) => {
-      t.forEach((u) => {
-        u.forEach((v) => {
-          v.forEach((w) => {
-            w.value = flat[w.r][w.c];
-          });
-        });
-      });
-    });
-    return s;
   }
 
   function getNewSudoku(difficulty) {
@@ -128,7 +98,7 @@ function Sudoku() {
             {s.map((x) => (
               <div className="GridColumn">
                 {x.map((y) => (
-                  <Box data={y} s={s} sets={sets}/>
+                  <Box data={y} s={s} sets={sets} />
                 ))}
               </div>
             ))}
@@ -141,18 +111,10 @@ function Sudoku() {
             >
               Check
             </md-filled-button>
-            <md-filled-button
-              onClick={() => {
-                console.log(s);
-              }}
-            >
-              Verify
-            </md-filled-button>
             <FaGear />
           </div>
         </>
       )}
-      // title screen
       {titleScreen && (
         <>
           <div className="Menu">
