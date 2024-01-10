@@ -3,7 +3,7 @@ import "./Box.css";
 import Column from "./Column";
 
 function Box({ data, s, sets, meta, setMeta }) {
-  let k = data;
+  const k = data;
   return (
     <div className="Box">
       {k.map((u) => (

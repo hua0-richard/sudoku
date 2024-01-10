@@ -12,17 +12,17 @@ function Column({ k, s, sets, meta, setMeta }) {
     width: "7vw",
   };
   const [val, setVal] = useState(r);
+  const [subcol, setSubcol] = useState(k);
 
   function input(m, e) {
-    let temp = flattenSudoku(s);
-    temp[m.r][m.c] = e;
-    let result = copyIntoSudoku(temp, s);
-    sets(result);
+    let temp = subcol;
+    subcol[subcol.indexOf(m)].value = e;
+    setSubcol(temp);
   }
 
   const column = (
     <div>
-      {k.map((m) =>
+      {subcol.map((m) =>
         m.input === false ? (
           <div className="box" style={val}>
             {m.value}
@@ -41,16 +41,21 @@ function Column({ k, s, sets, meta, setMeta }) {
     </div>
   );
 
-  const columnSolution = (<div>
-    {
-      k.map((m) => <div className="box" style={val}>{m.value}</div>)
-    }
-  </div>);
-
-  return (
-    meta.mode === "player" ? 
-    column : columnSolution
+  const columnSolution = (
+    <div>
+      {subcol.map((m) => m.value === meta.solution[m.r][m.c] ? (
+          <div className="correctBox" style={val}>
+            {m.value}
+          </div>
+      ) : (
+        <div>
+          <div className="diffbox" style={val}>{meta.solution[m.r][m.c]}</div>
+        </div>
+      ))}
+    </div>
   );
+
+  return meta.mode === "player" ? column : columnSolution;
 }
 
 export default Column;

@@ -90,8 +90,9 @@ function Sudoku() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        let temp = copyIntoSudoku(data.result, s);
-        sets(temp);
+        // let temp = copyIntoSudoku(data.result, s);
+        // sets(temp);
+        setSolution(data.result);
         changeMode("solution");
         setLoading(true);
       });
