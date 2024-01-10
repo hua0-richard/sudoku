@@ -48,7 +48,7 @@ function Sudoku() {
       .then((data) => {
         console.log(data);
         console.log(data.result);
-        let puzzle = copyIntoSudoku(data.result, s);
+        let puzzle = copyIntoSudoku(data.result, s, true);
         sets(puzzle);
         setLoading(true);
       });

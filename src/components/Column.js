@@ -12,30 +12,28 @@ function Column({ k, s, sets }) {
     width: "7vw",
   };
   const [val, setVal] = useState(r);
+  const [inputClass, setInputClass] = useState("input")
 
-  function nothing(m, e) {
+  function input(m, e) {
     let temp = flattenSudoku(s);
-    temp[m.c][m.r] = e;
+    temp[m.r][m.c] = e;
     let result = copyIntoSudoku(temp, s);
     sets(result);
-    if (isValid(flattenSudoku(s), m.r, m.c, e)) {
-    } else {
-    }
   }
 
   return (
     <div>
       {k.map((m) =>
-        m.value != 0 ? (
+        m.input === false ? (
           <div className="box" style={val}>
             {m.value}
           </div>
         ) : (
           <div className="box" style={val}>
             <input
-              className="input"
+              className={inputClass}
               onChange={(e) => {
-                nothing(m, parseInt(e.target.value));
+                input(m, parseInt(e.target.value));
               }}
             />
           </div>
