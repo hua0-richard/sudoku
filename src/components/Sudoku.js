@@ -9,10 +9,19 @@ function Sudoku() {
   const [titleScreen, setTitleScreen] = useState(true);
   const [doneLoading, setLoading] = useState(false);
   const [s, sets] = useState(sudokuData());
-  const [solution, setSolution] = useState(null);
+  const [meta, setMeta] = useState({
+    mode: "player",
+    difficulty: "easy",
+    solution: []
+  })
 
-  function newGame(difficulty) {
-    getNewSudoku(difficulty);
+  function difficulty(level) {
+    let temp = meta; 
+    temp.difficulty = level;
+    setMeta(temp);
+  }
+  function newGame() {
+    getNewSudoku(meta.difficulty);
   }
 
   function boxData(a, b) {
@@ -122,7 +131,8 @@ function Sudoku() {
             <md-filled-button
               class="Standard-Button"
               onClick={() => {
-                newGame("easy");
+                difficulty("easy")
+                newGame();
               }}
             >
               Easy
@@ -130,7 +140,8 @@ function Sudoku() {
             <md-filled-button
               class="Standard-Button"
               onClick={() => {
-                newGame("medium");
+                difficulty("medium")
+                newGame();
               }}
             >
               Medium
@@ -138,7 +149,8 @@ function Sudoku() {
             <md-filled-button
               class="Standard-Button"
               onClick={() => {
-                newGame("hard");
+                difficulty("hard")
+                newGame();
               }}
             >
               Hard
